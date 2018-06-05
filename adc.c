@@ -24,7 +24,7 @@ unsigned int readAnalogValue(uint8_t channel, unsigned int vRef)
 		AB_ANALOG_PORT1 &=~ (1<<channel);	
 		channel= (channel)&(0x0F);  
 
-		ADMUX |= channel;        // Selecting the ADC channel
+		ADMUX = channel;        // Selecting the ADC channel
 		ADCSRA |= (1<<ADSC)|(1<<ADEN);  // Start ADC conversion and enabling ADC
 		ADCSRB &=~ (1<<MUX5);
 		while(!(ADCSRA&(1<<ADIF)));   // Waiting for ADC conversion to complete
@@ -45,7 +45,7 @@ unsigned int readAnalogValue(uint8_t channel, unsigned int vRef)
 		AB_ANALOG_PORT2 &=~ (1<<channel);	
 		channel= (channel)&(0x0F);  
 
-		ADMUX |= channel;        // Selecting the ADC channel
+		ADMUX = channel;        // Selecting the ADC channel
 		ADCSRA |= (1<<ADSC)|(1<<ADEN);  // Start ADC conversion and enabling ADC
 		ADCSRB |= (1<<MUX5);
 		while(!(ADCSRA&(1<<ADIF)));   // Waiting for ADC conversion to complete
